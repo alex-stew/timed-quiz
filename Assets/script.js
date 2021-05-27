@@ -1,28 +1,53 @@
-var questions = [
-    {
-        prompt: "How"
-        answer: ""
-    },
-    {
-        prompt: ""
-        answer: ""
-    },
-    {
+// store array of questions, with corresponding choices and answer
+const questions = [];
 
-    }
+// set primary page elements
+let score = 0;
+let currentQuestion = 0;
+let countdown = 0;
+const timer;
 
-]
-var score = 0;
+// starts quiz and timer on click
+function play() {
+    countdown = 50;
+    let countdown = document.getElementById('countdown').innerHTML;
 
-for (var i=0; i < questions.length; i++){
-    var response = window.prompt(questions[i].prompt);
-    if (response == questions[i].answer){
-        score++;
-        alert("Correct!");
-    } else {
-        alert("WRONG!");
-        
-    }
+    timer = setInterval(() => {
+        if (countdown <= 0) {
+            clearInterval(timer);
+            // gameOver();
+        }   
+
+    },1000);
+    nextQuestion();
 }
 
-alert("You scored " + score + "/" + questions.length);
+
+function nextQuestion() {
+
+}
+
+function correctAnswer() {
+    
+}
+
+function incorrectAnswer() {
+
+}
+
+function gameOver() {
+
+}
+
+function setHighScore() {
+
+}
+
+function getHighScore() {
+
+}
+
+function clearHighScore() {
+
+}
+

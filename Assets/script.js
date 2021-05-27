@@ -7,6 +7,8 @@ let currentQuestion = 0;
 let countdown = 0;
 const timer;
 
+
+
 // starts quiz and timer on click
 function play() {
     countdown = 50;
@@ -43,7 +45,7 @@ function setHighScore() {
 
 }
 
-function getHighScore() {
+function seeHighScores() {
 
 }
 

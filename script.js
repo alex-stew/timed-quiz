@@ -3,11 +3,16 @@ const homeEl = document.querySelector("#home");
 const gameEl = document.querySelector("#game");
 const playBtnEl= document.querySelector("#play-btn");
 const viewHighScoresEl = document.querySelector("#highscores-btn");
+const highscoreConEl = document.querySelector("#highscores");
 let countEl = document.querySelector("#countdown");
 let scoreEl = document.querySelector("#score");
 let questionIdEl = document.querySelector("#questionId");
 let questionTitleEl = document.querySelector("#questionTitle");
 let questionChoicesEl = document.querySelector("#questionChoices");
+let questionContainerEl = document.querySelector("#questionContainer");
+let playerName = document.querySelector("#name");
+let myScoreBtnEl = document.querySelector("#myScore-btn");
+let userScoreEl = document.querySelector("#userscore");
 
 let questionIndex = -1;
 let countdown = 75;
@@ -19,12 +24,12 @@ const questions = [
     {
         id: "1",
         title: "Commonly Used data types DO NOT include:",
-        choices: ["stings", "alerts", "booleans", "numbers"],
+        choices: ["strings", "alerts", "booleans", "numbers"],
         answer: "alerts"
     },
     {
         id: "2",
-        title: "The condition in an if / else statment is enclosed within _____.",
+        title: "The condition in an if / else statement is enclosed within _____.",
         choices: ["parentheses", "quotes", "curly brackets", "square brackets"],
         answer: "parentheses"
     },
@@ -48,7 +53,6 @@ const questions = [
     }
 ];
 
-
 function correctAnswer() {
     score += 10;
     scoreEl.innerHTML = "<p>" + score + "</p>";
@@ -63,6 +67,9 @@ function incorrectAnswer() {
 
 function gameOver() {
     clearInterval(timer);
+    countEl.innerHTML = "";
+    highscoreConEl.classList.remove("d-none");
+    userScoreEl.innerHTML = score;
 }
 
 // references an index and displays new question each time it is called
@@ -72,22 +79,24 @@ function nextQuestion() {
         gameOver();
         return;
     }
+    
     let currentQuestion = questions[questionIndex];
-    questionIdEl.innerHTML = "<p>" + currentQuestion.id + ":</p>";
-    questionTitleEl.innerHTML = "<p> " + currentQuestion.title + "</p>";
+    questionChoicesEl.innerHTML = "";
+    questionTitleEl.innerHTML = "<p class=\"mb-0\"> " + currentQuestion.title + "</p>";
     for (let selectedAnswer = 0; selectedAnswer < currentQuestion.choices.length; selectedAnswer++) {
-        let buttonId = "<button onclick=\"[ANS]\">[CHOICE]</button>";
+        let buttonId = `<button class="p-2 m-1"onclick="[ANS]">[CHOICE]</button>`;
         buttonId = buttonId.replace("[CHOICE]", currentQuestion.choices[selectedAnswer]);
         if (currentQuestion.choices[selectedAnswer] == currentQuestion.answer){
-            buttonId = buttonId.replace("[ANS]", "correct()");
+            buttonId = buttonId.replace("[ANS]", "correctAnswer()");
         } else {
-            buttonId = buttonId.replace("[ANS]", "incorrect()");
+            buttonId = buttonId.replace("[ANS]", "incorrectAnswer()");
         }
         questionChoicesEl.innerHTML += buttonId
     }
 };
 
 function start() {  
+    console.log();
     homeEl.classList.add("d-none");
     gameEl.classList.remove("d-none");
     console.log('working');     
@@ -104,17 +113,23 @@ function start() {
 
 
 function setHighScore() {
+    localStorage.setItem("highscore", score);
+    localStorage.setItem("initials", playerName);
+    viewHighScores();
+}
+
+function viewHighScores() {
 
 }
 
-// function viewHighScores() {
-
-// }
-
-// function clearHighScore() {
-
-// }
+function clearHighScore() {
+    localStorage.setItem("highscore", "");
+    localStorage.setItem("initials",  "");
+    reset();
+}
 
 // event listeners
-// starts quiz and timer on click
-playBtnEl.addEventListener("click", start());
+playBtnEl.addEventListener("click", start);
+viewHighScoresEl.addEventListener("click", viewHighScores);
+myScoreBtnEl.addEventListener("click",setHighScore);
+clearScoresBtnEl.addEventListener("click",clearHighScore);

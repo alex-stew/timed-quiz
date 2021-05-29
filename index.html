@@ -7,9 +7,9 @@
     <title>JavaScript Quiz</title>
 
     <link rel="shortcut icon" href="../homework-task4/assets/misc/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../homework-task4/assets/reset.css">
+    <link rel="stylesheet" href="./reset.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/761f2d282b.js" crossorigin="anonymous"></script>
 </head>
@@ -22,30 +22,36 @@
         </div>
     </header>
 
-    <div class="greenBox">
-        <div id="home" class="flex-column flex-center">
+    <div class="greenBox flex-center">
+        <div id="home" class="flex flex-column flex-center">
             <h1 class="display-2">Coding Quiz Challenge</h1>
             <p class="lead">So you think you know a little something about Javascript huh....well, it is time to test your mettle. Answer me these ten questions correct to win the prize. Keep in mind however, answer me incorrectly - you'll meet a timed demise.</p>
             <button id="play-btn" class="btn btnContainer">Play</button>
-            <button onclick=viewHighScores() id="highscores-btn" class="btn btnContainer">View Highscores<i class="fas fa-crown"></i></button>
+            <button id="highscores-btn" class="btn btnContainer">View Highscores<i class="fas fa-crown"></i></button>
         </div>
-        <div id="game" class="d-none flex-column flex-center">
+        <div id="game" class="d-none flex flex-column flex-center align-center">
             <h3 class="text-center py-3 border border-5 rounded-top">Quickly now, make haste!!</h3>
-            <div class="questionsContainer flex flex-col">
+            <div class="questionsContainer">
                 <div class="row">
-                    <div class="col-md">
-                        <h1 class="text-center p-2 border border-3" id="questionId"></h1>
-                        <h1 class="text-center" id="questionTitle"></h1>
+                    <div class="col-md flex-column flex-center">
+                        <h1 class="text-center border border-3 p-2 my-0 " id="questionTitle"></h1>
                         <div class="row">
-                            <div class="col-md ">
-                                <div class="text-center d-flex flex-col  mt-4 mx-2" id="questionChoices"></div>
-                                <div class="text-center" id="questionRightWrong"></div>
+                            <div class="col-md flex-column ">
+                                <div class="text-center d-block mt-2 mx-2" id="questionChoices"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="d-none flex-column col-md py-4" id="highscores">
+                                <h2 class="text-center">!GAME OVER!</h2>
+                                <h3 class="text-center">Your score was:<span id="userscore"></span></h3>
+                                <input class="text-center" type="text" id="name" placeholder="please, enter your initials">
+                                <button class="self-center" id="myScore-btn" class="btn btnContainer">Save</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <p class="lead float-end">score:<span id="score"></span>/50</p>
+            <p class="flex">score:<span class="flex" id="score"></span> /50</p>
         </div>
     </div>
 
@@ -62,7 +68,7 @@
         </div>
     </footer>
 
-    <script type="text/javascript" src="./assets/script.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
 
 </body>
 

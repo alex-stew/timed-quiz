@@ -41,10 +41,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="d-none flex-column col-md py-4" id="highscores">
+                            <div class="d-none flex-column col-md py-4" id="gameScore">
                                 <h2 class="text-center">!GAME OVER!</h2>
                                 <h3 class="text-center">Your score was:<span id="userscore"></span></h3>
-                                <input class="text-center" type="text" id="name" placeholder="please, enter your initials">
+                                <input class="text-center" type="text" id="playerName" placeholder="please, enter your initials">
                                 <button class="self-center" id="myScore-btn" class="btn btnContainer">Save</button>
                             </div>
                         </div>
@@ -53,6 +53,15 @@
             </div>
             <p class="flex">score:<span class="flex" id="score"></span> /50</p>
         </div>
+        <div id="highscores" class="d-none flex flex-column flex-center align-center">
+            <h2 class="text-center">HIGHSCORES:
+                <hr>
+            </h2>
+            <p><span id="savedName"></span></p>
+            <p><span id="savedScore"></span></p>
+            <button class="self-center" id="clearScore-btn" class="btn btnContainer">Clear</button>
+        </div>
+
     </div>
 
     <footer class="footer">

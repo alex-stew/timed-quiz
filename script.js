@@ -1,18 +1,22 @@
 // get page elements
 const homeEl = document.querySelector("#home");
 const gameEl = document.querySelector("#game");
+const highscoreEl = document.querySelector("#highscores");
 const playBtnEl= document.querySelector("#play-btn");
 const viewHighScoresEl = document.querySelector("#highscores-btn");
-const highscoreConEl = document.querySelector("#highscores");
+let savedNameEl = document.querySelector("#savedName");
+let savedScoreEl = document.querySelector("#savedScore");
+let gameScoreConEl = document.querySelector("#gameScore");
 let countEl = document.querySelector("#countdown");
 let scoreEl = document.querySelector("#score");
 let questionIdEl = document.querySelector("#questionId");
 let questionTitleEl = document.querySelector("#questionTitle");
 let questionChoicesEl = document.querySelector("#questionChoices");
 let questionContainerEl = document.querySelector("#questionContainer");
-let playerName = document.querySelector("#name");
+let playerNameEl = document.querySelector("#playerName");
 let myScoreBtnEl = document.querySelector("#myScore-btn");
 let userScoreEl = document.querySelector("#userscore");
+let clearScoresBtnEl = document.querySelector("#clearScore-btn");
 
 let questionIndex = -1;
 let countdown = 75;
@@ -68,7 +72,7 @@ function incorrectAnswer() {
 function gameOver() {
     clearInterval(timer);
     countEl.innerHTML = "";
-    highscoreConEl.classList.remove("d-none");
+    gameScoreConEl.classList.remove("d-none");
     userScoreEl.innerHTML = score;
 }
 
@@ -113,19 +117,25 @@ function start() {
 
 
 function setHighScore() {
+    console.log(playerNameEl.value);
     localStorage.setItem("highscore", score);
-    localStorage.setItem("initials", playerName);
+    localStorage.setItem("initials", playerNameEl.value);
     viewHighScores();
 }
 
 function viewHighScores() {
-
+    homeEl.classList.add("d-none");
+    gameEl.classList.add("d-none");
+    highscoreEl.classList.remove("d-none");
+    savedNameEl.innerHTML = localStorage.getItem("initials");
+    savedScoreEl.innerHTML = localStorage.getItem("highscore");
 }
 
 function clearHighScore() {
+
     localStorage.setItem("highscore", "");
     localStorage.setItem("initials",  "");
-    reset();
+    location.reload();
 }
 
 // event listeners

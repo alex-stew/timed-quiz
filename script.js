@@ -59,7 +59,7 @@ const questions = [
 
 function correctAnswer() {
     score += 10;
-    scoreEl.innerHTML = "<p>" + score + "</p>";
+    scoreEl.innerHTML =  score;
     nextQuestion();
 }
 

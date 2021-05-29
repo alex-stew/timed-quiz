@@ -44,14 +44,16 @@
                             <div class="d-none flex-column col-md py-4" id="gameScore">
                                 <h2 class="text-center">!GAME OVER!</h2>
                                 <h3 class="text-center">Your score was:<span id="userscore"></span></h3>
-                                <input class="text-center" type="text" id="playerName" placeholder="please, enter your initials">
-                                <button class="self-center" id="myScore-btn" class="btn btnContainer">Save</button>
+                                <input class="text-center my-3" type="text" id="playerName" placeholder="please, enter your initials">
+                                <button class="self-center my-3" id="myScore-btn" class="btn btnContainer">Save</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <p class="flex">score:<span class="flex" id="score"></span> /50</p>
+            <div class="row">
+                <p class="flex-row">score:<span id="score"></span>/50</p>
+            </div>
         </div>
         <div id="highscores" class="d-none flex flex-column flex-center align-center">
             <h2 class="text-center">HIGHSCORES:

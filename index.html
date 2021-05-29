@@ -18,8 +18,7 @@
     <header class="fixed-top px-4 py-4">
         <div class="container-fluid space-between">
             <img id="logo-image" src="./assets/misc/edenLogo.v4.png" alt="logo">
-            <div id="countdown" class="float-end">
-            </div>
+            <div id="countdown" class="float-end"></div>
         </div>
     </header>
 
@@ -31,21 +30,22 @@
             <button onclick=viewHighScores() id="highscores-btn" class="btn btnContainer">View Highscores<i class="fas fa-crown"></i></button>
         </div>
         <div id="game" class="d-none flex-column flex-center">
-            <h1>Quickly now, make haste!!</h1>
-            <h4 class="float-end">score:<span id="score"></span> /50</h4>
-            <div class="questionsContainer">
+            <h3 class="text-center py-3 border border-5 rounded-top">Quickly now, make haste!!</h3>
+            <div class="questionsContainer flex flex-col">
                 <div class="row">
                     <div class="col-md">
+                        <h1 class="text-center p-2 border border-3" id="questionId"></h1>
                         <h1 class="text-center" id="questionTitle"></h1>
                         <div class="row">
-                            <div class="col-md">
-                                <div class="text-center d-flex flex-row mt-4" id="questionChoices"></div>
+                            <div class="col-md ">
+                                <div class="text-center d-flex flex-col  mt-4 mx-2" id="questionChoices"></div>
                                 <div class="text-center" id="questionRightWrong"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <p class="lead float-end">score:<span id="score"></span>/50</p>
         </div>
     </div>
 
